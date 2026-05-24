@@ -36,19 +36,19 @@ export default function PendingApprovalPage() {
         {/* 안내 카드 */}
         <div className="bg-zinc-900/60 backdrop-blur-sm border border-zinc-800 rounded-2xl p-5 text-left space-y-3 mb-6">
           <div className="flex items-start gap-3">
-            <span className="text-orange-400 mt-0.5">•</span>
+            <span className="text-lime-400 mt-0.5">•</span>
             <p className="text-zinc-300 text-sm">
               운영자에게 가입 사실을 알려주시면 더 빠르게 승인받을 수 있어요.
             </p>
           </div>
           <div className="flex items-start gap-3">
-            <span className="text-orange-400 mt-0.5">•</span>
+            <span className="text-lime-400 mt-0.5">•</span>
             <p className="text-zinc-300 text-sm">
               승인이 완료되면 자동으로 서비스가 활성화됩니다.
             </p>
           </div>
           <div className="flex items-start gap-3">
-            <span className="text-orange-400 mt-0.5">•</span>
+            <span className="text-lime-400 mt-0.5">•</span>
             <p className="text-zinc-300 text-sm">
               이미 SRC 멤버라면 기존 운영자에게 문의해 주세요.
             </p>
@@ -62,7 +62,7 @@ export default function PendingApprovalPage() {
             <button
               id="refresh-status-btn"
               type="submit"
-              className="w-full h-11 bg-orange-500 hover:bg-orange-600 text-white text-sm font-bold rounded-xl transition-colors duration-150"
+              className="w-full h-11 bg-lime-400 hover:bg-lime-500 text-black text-sm font-bold rounded-xl transition-colors duration-150 shadow-lg shadow-lime-950/20"
             >
               승인 상태 새로고침
             </button>

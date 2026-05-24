@@ -83,7 +83,7 @@ export default function ProfileSetupPage() {
       <div className="w-full max-w-sm">
         {/* 헤더 */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500 to-red-600 mb-4 shadow-xl shadow-orange-900/30">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-lime-400 text-black mb-4 shadow-xl shadow-lime-950/35">
             <span className="text-3xl">✍️</span>
           </div>
           <h1 className="text-xl font-bold text-white">프로필 설정</h1>
@@ -107,7 +107,7 @@ export default function ProfileSetupPage() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 maxLength={20}
-                className="bg-zinc-800/50 border-zinc-700 text-white placeholder:text-zinc-600 focus:border-orange-500 focus:ring-orange-500/20 rounded-xl h-11"
+                className="bg-zinc-800/50 border-zinc-700 text-white placeholder:text-zinc-600 focus:border-lime-400 focus:ring-lime-400/20 rounded-xl h-11"
               />
             </div>
 
@@ -127,7 +127,7 @@ export default function ProfileSetupPage() {
                   setBirthYear(val)
                 }}
                 maxLength={2}
-                className="bg-zinc-800/50 border-zinc-700 text-white placeholder:text-zinc-600 focus:border-orange-500 focus:ring-orange-500/20 rounded-xl h-11"
+                className="bg-zinc-800/50 border-zinc-700 text-white placeholder:text-zinc-600 focus:border-lime-400 focus:ring-lime-400/20 rounded-xl h-11"
               />
             </div>
 
@@ -141,9 +141,9 @@ export default function ProfileSetupPage() {
                     type="button"
                     id={`gender-${g}`}
                     onClick={() => setGender(g)}
-                    className={`h-11 rounded-xl text-sm font-medium transition-all duration-150 border ${
+                    className={`h-11 rounded-xl text-sm font-bold transition-all duration-150 border ${
                       gender === g
-                        ? 'bg-orange-500 border-orange-500 text-white shadow-lg shadow-orange-900/30'
+                        ? 'bg-lime-400 border-lime-400 text-black shadow-lg shadow-lime-950/20'
                         : 'bg-zinc-800/50 border-zinc-700 text-zinc-400 hover:border-zinc-500'
                     }`}
                   >
@@ -171,7 +171,7 @@ export default function ProfileSetupPage() {
               id="profile-submit-btn"
               type="submit"
               disabled={isLoading}
-              className="w-full h-12 bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-semibold rounded-xl transition-all duration-200 shadow-lg shadow-orange-900/30 disabled:opacity-70 mt-2"
+              className="w-full h-12 bg-lime-400 hover:bg-lime-500 text-black font-extrabold rounded-xl transition-all duration-200 shadow-lg shadow-lime-950/30 disabled:opacity-70 mt-2"
             >
               {isLoading ? '저장 중...' : '완료'}
             </Button>
