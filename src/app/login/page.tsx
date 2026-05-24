@@ -7,17 +7,19 @@ export const metadata: Metadata = {
   description: '수원러닝크루 멤버 전용 러닝 기록 및 생존 관리 시스템',
 }
 
-export default function LoginPage({
+export default async function LoginPage({
   searchParams,
 }: {
-  searchParams: { error?: string }
+  searchParams: Promise<{ error?: string }>
 }) {
+  const resolvedSearchParams = await searchParams
+  const error = resolvedSearchParams.error
   return (
     <main className="min-h-screen bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 flex items-center justify-center p-4">
       <div className="w-full max-w-sm">
         {/* 로고 영역 */}
         <div className="text-center mb-10">
-          <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-orange-500 to-red-600 mb-4 shadow-xl shadow-orange-900/30">
+          <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-lime-400 to-lime-500 mb-4 shadow-xl shadow-lime-950/30">
             <span className="text-4xl">🏃</span>
           </div>
           <h1 className="text-2xl font-bold text-white tracking-tight">수원러닝크루</h1>
@@ -31,7 +33,7 @@ export default function LoginPage({
           </p>
 
           {/* 에러 메시지 */}
-          {searchParams.error && (
+          {error && (
             <div className="mb-4 p-3 bg-red-950/50 border border-red-900 rounded-lg text-red-400 text-sm text-center">
               로그인 중 오류가 발생했습니다. 다시 시도해 주세요.
             </div>

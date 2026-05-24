@@ -37,31 +37,45 @@ export default function ProfileSetupPage() {
 
     setIsLoading(true)
 
-    const { data: { user } } = await supabase.auth.getUser()
-    if (!user) {
-      setError('인증 정보를 찾을 수 없습니다. 다시 로그인해 주세요.')
+    try {
+      console.log('1. 저장 시작 - 사용자 세션 가져오는 중...')
+      const { data: { user } } = await supabase.auth.getUser()
+      console.log('2. 사용자 세션 결과:', user)
+      
+      if (!user) {
+        setError('인증 정보를 찾을 수 없습니다. 다시 로그인해 주세요.')
+        setIsLoading(false)
+        return
+      }
+
+      console.log('3. 프로필 저장(Upsert) 실행 중...')
+      const { data: updateData, error: updateError } = await supabase
+        .from('profiles')
+        .upsert({
+          id: user.id,
+          name: name.trim(),
+          birth_year: parseInt(birthYear, 10),
+          gender,
+          is_profile_complete: true,
+          role: 'WAITING',
+          exemption: 'NORMAL',
+          is_active: true,
+        })
+        .select()
+
+      console.log('4. 프로필 저장 완료. 결과:', updateData, '에러:', updateError)
+
+      if (updateError) {
+        throw new Error(updateError.message)
+      }
+
+      console.log('5. 승인 대기 페이지로 라우팅 시도 (/pending-approval)')
+      router.push('/pending-approval')
+    } catch (err: any) {
+      console.error('프로필 저장 에러:', err)
+      setError(err.message || '저장 중 오류가 발생했습니다. 다시 시도해 주세요.')
       setIsLoading(false)
-      return
     }
-
-    const { error: updateError } = await supabase
-      .from('profiles')
-      .update({
-        name: name.trim(),
-        birth_year: parseInt(birthYear, 10),
-        gender,
-        is_profile_complete: true,
-      })
-      .eq('id', user.id)
-
-    if (updateError) {
-      setError('저장 중 오류가 발생했습니다. 다시 시도해 주세요.')
-      setIsLoading(false)
-      return
-    }
-
-    // 프로필 설정 완료 → WAITING이므로 승인 대기 페이지로
-    router.push('/pending-approval')
   }
 
   return (

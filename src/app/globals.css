@@ -85,3 +85,46 @@
     @apply font-sans;
   }
 }
+
+/* ==========================================
+   모바일 디바이스 프레임 강제 오버라이드 스타일
+   ========================================== */
+.force-mobile aside {
+  display: none !important;
+}
+.force-mobile header {
+  display: flex !important;
+}
+.force-mobile .md\:pl-64 {
+  padding-left: 0 !important;
+}
+.force-mobile .md\:pb-0 {
+  padding-bottom: 6rem !important;
+}
+.force-mobile .md\:p-8 {
+  padding: 1.25rem !important;
+}
+.force-mobile nav.md\:hidden {
+  display: flex !important;
+}
+.force-mobile .md\:grid-cols-3 {
+  grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+}
+.force-mobile .md\:grid-cols-2 {
+  grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+}
+.force-mobile .md\:col-span-2 {
+  grid-column: span 1 / span 1 !important;
+}
+.force-mobile .md\:flex-row {
+  flex-direction: column !important;
+}
+.force-mobile .md\:items-center {
+  align-items: stretch !important;
+}
+.force-mobile .md\:self-center {
+  align-self: auto !important;
+}
+.force-mobile .md\:max-w-md {
+  max-width: 100% !important;
+}
